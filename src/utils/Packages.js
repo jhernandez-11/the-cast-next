@@ -1,6 +1,6 @@
 import React from "react";
 
-const ionicons = (props) => (
+const packages = (props) => (
   <React.Fragment>
     <script
       type="module"
@@ -13,4 +13,4 @@ const ionicons = (props) => (
   </React.Fragment>
 );
 
-export default ionicons
+export default packages;

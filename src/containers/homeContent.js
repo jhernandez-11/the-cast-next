@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import EarthBackground from "../components/UI/EarthBackground";
 import Button from "../components/UI/Button";
-import geocode from "../src/utils/geocode";
-import forecast from "../src/utils/forecast";
+import geocode from "../utils/geocode";
+import forecast from "../utils/forecast";
 import WeatherReport from "../components/weatherReport";
 import WeatherIcons from "../components/UI/weatherIcons";
 import axios from 'axios'

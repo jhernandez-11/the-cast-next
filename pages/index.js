@@ -1,10 +1,10 @@
 import Head from "next/head";
 import React, { Component } from "react";
-import Header from "../layout/Header";
-import HomeContent from "../containers/homeContent";
-import Footer from "../layout/Footer";
+import Header from "../src/layout/Header";
+import HomeContent from "../src/containers/homeContent";
+import Footer from "../src/layout/Footer";
 import styled from "styled-components";
-import Ionicons from "../components/UI/Ionicons";
+import Packages from "../src/utils/Packages";
 
 class Home extends Component {
   render() {
@@ -17,7 +17,7 @@ class Home extends Component {
         <Head>
           <title>The Cast</title>
           <link rel="icon" href="/favicon.png" />
-          <Ionicons />
+          <Packages />
         </Head>
         <Header />
         <HomeContent />

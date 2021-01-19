@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import InfoIcon from "../components/UI/InfoIcon";
 import Link from "next/link";
 import styled from "styled-components";
+import HeaderAnimation from "../components/UI/headerAnimation";
 
 class Header extends Component {
   render() {
@@ -19,11 +20,7 @@ class Header extends Component {
 
     return (
       <nav className="flex justify-around place-items-center h-24 w-full bg-gray-900">
-        <Link href="/">
-          <h1 className="text-5xl font-bold text-blue-500 cursor-pointer">
-            THE /|\ CAST
-          </h1>
-        </Link>
+        <HeaderAnimation />
         <Link href="/info">
           <InformationIcon>
             <ion-icon name="information-circle-outline"></ion-icon>

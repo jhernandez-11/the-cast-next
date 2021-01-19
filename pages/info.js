@@ -1,8 +1,9 @@
 import Head from "next/head";
 import React, { Component } from "react";
-import Header from "../layout/Header";
-import InfoContent from "../components/infoContent";
-import Footer from "../layout/Footer";
+import Header from "../src/layout/Header";
+import InfoContent from "../src/components/infoContent";
+import Footer from "../src/layout/Footer";
+import Packages from "../src/utils/Packages";
 
 class Home extends Component {
   render() {
@@ -11,6 +12,7 @@ class Home extends Component {
         <Head>
           <title>The Cast</title>
           <link rel="icon" href="/favicon.png" />
+          <Packages />
         </Head>
         <Header />
         <InfoContent />
