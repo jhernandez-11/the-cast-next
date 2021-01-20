@@ -12,6 +12,7 @@ class Home extends Component {
         <Head>
           <title>INFO</title>
           <link rel="icon" href="/favicon.png" />
+          <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
           <Packages />
         </Head>
         <Header />

@@ -2,11 +2,11 @@ const axios = require("axios");
 
 const forecast = (latitude, longitude, callback) => {
   const url =
-    "https://api.weatherstack.com/current?access_key=7f52f87871bb95a8a0a2cac4d02a088f&query=" +
+    "http://api.weatherstack.com/current?access_key=7f52f87871bb95a8a0a2cac4d02a088f&query=" +
     longitude +
     "," +
     latitude +
-    "&units=f";
+    "&units=f/";
 
   axios
     .get(url)
