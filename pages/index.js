@@ -10,15 +10,14 @@ class Home extends Component {
   render() {
     const Title = styled.h1`
       color: blue;
-    `;    
+    `;
 
     return (
       <div className="global-container">
         <Head>
           <title>HOME</title>
-          <link rel="icon" href="/favicon.png" />
-          <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
           <Packages />
+          <link rel="icon" href="/favicon.png" />
         </Head>
         <Header />
         <HomeContent />

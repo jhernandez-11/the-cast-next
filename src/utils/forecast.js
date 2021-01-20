@@ -6,7 +6,7 @@ const forecast = (latitude, longitude, callback) => {
     longitude +
     "," +
     latitude +
-    "&units=f/";
+    "&units=f";
 
   axios
     .get(url)

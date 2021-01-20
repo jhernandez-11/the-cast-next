@@ -11,9 +11,8 @@ class Home extends Component {
       <div className="global-container">
         <Head>
           <title>INFO</title>
-          <link rel="icon" href="/favicon.png" />
-          <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
           <Packages />
+          <link rel="icon" href="/favicon.png" />
         </Head>
         <Header />
         <InfoContent />
