@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import InfoIcon from "../components/UI/InfoIcon";
 import Link from "next/link";
 import styled from "styled-components";
 import HeaderAnimation from "../components/UI/headerAnimation";
@@ -15,6 +14,10 @@ class Header extends Component {
 
       &:hover {
         color: rgba(59, 130, 246, 0.75);
+      }
+
+      @media(max-width: 640px) {
+        font-size: 2.1rem;
       }
     `;
 

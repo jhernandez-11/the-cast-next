@@ -15,7 +15,7 @@ class Home extends Component {
     return (
       <div className="global-container">
         <Head>
-          <title>The Cast</title>
+          <title>HOME</title>
           <link rel="icon" href="/favicon.png" />
           <Packages />
         </Head>

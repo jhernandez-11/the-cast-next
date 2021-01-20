@@ -5,7 +5,7 @@ import geocode from "../utils/geocode";
 import forecast from "../utils/forecast";
 import WeatherReport from "../components/weatherReport";
 import WeatherIcons from "../components/UI/weatherIcons";
-import axios from 'axios'
+import axios from "axios";
 
 class HomeContent extends Component {
   state = {
@@ -70,7 +70,7 @@ class HomeContent extends Component {
               location,
             }
           )
-          .catch(error => console.log(error))
+          .catch((error) => console.log(error));
 
         forecast(longitude, latitude, (error, currentForecast) => {
           if (error) {
@@ -84,8 +84,9 @@ class HomeContent extends Component {
 
   render() {
     const preview = (
-      <h1>
-        Need the current weather with some additional advice? Get started above!
+      <h1 className="w-full text-center sm:text-left sm:w-2/3">
+        Need the current weather with some additional advice?
+        <br /> Get started above!
       </h1>
     );
 
@@ -109,16 +110,22 @@ class HomeContent extends Component {
     };
 
     return (
-      <main className="flex justify-around place-items-center relative h-full w-full bg-gray-900 overflow-hidden">
+      <main className="flex justify-around place-items-center relative h-full w-full bg-blue-900 sm:bg-gray-900 overflow-scroll sm:overflow-hidden">
         <div className="absolute bg-black w-full h-full z-10 opacity-75"></div>
         <EarthBackground />
         <div
-          className="w-5/6 h-4/5 z-10 rounded-xl"
-          style={{ background: "rgba(0, 0, 0, .75)" }}
+          className="w-full h-full z-10 rounded-xl
+            sm:w-4/5 sm:h-4/5"
+          style={{ background: "rgba(30, 58, 138, .75)" }}
         >
-          <div className="flex justify-between">
-            <Button click={this.getCoordinatesHandler}>GET MY LOCATION</Button>
-            <div>
+          <div className="grid place-items-center sm:place-items-start">
+            <div
+              className="grid mt-6 
+                sm:mt-0 sm:grid-flow-col sm:place-items-center"
+            >
+              <Button click={this.getCoordinatesHandler}>
+                GET MY LOCATION
+              </Button>
               <input
                 type="text"
                 value={this.state.manualCoords}
@@ -128,13 +135,17 @@ class HomeContent extends Component {
                     coords: event.target.value,
                   })
                 }
-                className="px-3 py-4 rounded-lg"
+                className="px-2 py-3 w-full rounded-lg my-3 
+                  sm:px-3 sm:py-4"
                 placeholder="Ex. San Francisco"
               ></input>
               <Button click={this.getManualCoordinatesHandler}>SEARCH</Button>
             </div>
           </div>
-          <div className="flex justify-between text-white text-2xl m-6">
+          <div
+            className="flex flex-col text-white text-2xl m-4
+            sm:flex-row sm:justify-between sm:m-6"
+          >
             {this.state.showPreview ? preview : content()}
           </div>
         </div>
