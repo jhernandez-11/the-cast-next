@@ -17,7 +17,12 @@ class HomeContent extends Component {
     showContent: false,
     showPreview: true,
     error: null,
+    width: null
   };
+
+  componentDidMount() {
+    this.setState({ width: window.innerWidth })
+  }
 
   getCoordinatesHandler = () => {
     this.setState({
@@ -136,11 +141,18 @@ class HomeContent extends Component {
       }
     };
 
+    const earth = () => {
+      if (this.state.width >= 660) {
+        return <EarthBackground />
+      } else {
+        return null
+      }
+    }
+
     return (
       <main className="flex place-items-center justify-center relative h-max w-full bg-blue-900 overflow-hidden 
         sm:overflow-scroll sm:h-screen">
-        <div className="absolute bg-black w-full h-full z-10 opacity-75"></div>
-        <EarthBackground />
+        { earth() }
         <div
           className="w-2/3 h-5/6 z-10 rounded-xl min-md:max-h-120 md:w-5/6 
             sm:w-full sm:h-full sm:rounded-none"
