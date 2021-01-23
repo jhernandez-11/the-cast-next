@@ -1,32 +1,46 @@
 import React, { Component } from "react";
-import EarthBackground from "../components/UI/EarthBackground";
-import Button from "../components/UI/Button";
-import geocode from "../utils/geocode";
-import forecast from "../utils/forecast";
-import WeatherReport from "../components/weatherReport";
-import WeatherIcons from "../components/UI/weatherIcons";
+import EarthBackground from "../../components/UI/EarthBackground";
+import Button from "../../components/UI/Button";
+import geocode from "../../utils/geocode";
+import forecast from "../../utils/forecast";
+import WeatherReport from "./weatherReport";
+import WeatherIcons from "../../components/UI/icons/WeatherIcons";
 import axios from "axios";
 
 class HomeContent extends Component {
   state = {
-    coords: null,
-    manualCoords: null,
-    location: null,
+    coords: "",
+    manualCoords: "",
+    location: "",
     currentForecast: null,
     loading: false,
     showContent: false,
     showPreview: true,
+    error: null,
   };
 
   getCoordinatesHandler = () => {
-    this.setState({ loading: true });
-    this.setState({ showPreview: false });
+    this.setState({
+      loading: true,
+      showPreview: false,
+      showContent: false,
+      error: null,
+    });
 
     if (!navigator.geolocation) {
       return alert("Geolocation is not supported by your browser!");
     }
 
-    navigator.geolocation.getCurrentPosition(async (position) => {
+    const timeout = setTimeout(() => {
+      this.setState({
+        error: "Make sure your browser is allowed to access your location!",
+        loading: false,
+        showContent: true,
+      });
+    }, 9000);
+
+    navigator.geolocation.getCurrentPosition((position) => {
+      clearTimeout(timeout);
       try {
         const latitude = position.coords.latitude,
           longitude = position.coords.longitude,
@@ -35,20 +49,26 @@ class HomeContent extends Component {
         this.setState({ coords });
         this.setLocationHandler();
       } catch (error) {
-        this.setState({ location: "Something went wrong!" });
+        console.log(error);
+        this.setState({ error: "Something went wrong!" });
       }
     });
   };
 
   getManualCoordinatesHandler = () => {
-    this.setState({ loading: true });
-    this.setState({ showPreview: false });
+    this.setState({
+      loading: true,
+      showPreview: false,
+      showContent: false,
+      error: null,
+    });
 
     try {
       this.setState({ coords: this.state.manualCoords });
       this.setLocationHandler();
     } catch (error) {
-      this.setState({ location: "Something went wrong!" });
+      console.log(error);
+      this.setState({ error: "Something went wrong!" });
     }
   };
 
@@ -57,7 +77,8 @@ class HomeContent extends Component {
       this.state.coords,
       (error, { latitude, longitude, location } = {}) => {
         if (error) {
-          return;
+          console.log(error);
+          this.setState({ error });
         }
 
         this.setState({ location });
@@ -70,11 +91,15 @@ class HomeContent extends Component {
               location,
             }
           )
-          .catch((error) => console.log(error));
+          .catch((error) => {
+            console.log(error);
+            this.setState({ error });
+          });
 
         forecast(longitude, latitude, (error, currentForecast) => {
           if (error) {
-            return;
+            console.log(error);
+            this.setState({ error });
           }
           this.setState({ currentForecast, showContent: true, loading: false });
         });
@@ -99,30 +124,31 @@ class HomeContent extends Component {
       />
     );
 
+    const error = <p>{this.state.error}</p>;
+
     const content = () => {
       if (this.state.loading) {
         return weatherIcons;
       }
 
       if (this.state.showContent) {
-        return report;
+        return this.state.error ? error : report;
       }
     };
 
     return (
-      <main className="flex justify-around place-items-center relative h-full w-full bg-blue-900 sm:bg-gray-900 overflow-scroll sm:overflow-hidden">
+      <main className="flex place-items-center justify-center relative h-max w-full bg-blue-900 overflow-hidden 
+        sm:overflow-scroll sm:h-screen">
         <div className="absolute bg-black w-full h-full z-10 opacity-75"></div>
         <EarthBackground />
         <div
-          className="w-full h-full z-10 rounded-xl
-            sm:w-4/5 sm:h-4/5"
+          className="w-2/3 h-5/6 z-10 rounded-xl min-md:max-h-120 md:w-5/6 
+            sm:w-full sm:h-full sm:rounded-none"
           style={{ background: "rgba(30, 58, 138, .75)" }}
         >
-          <div className="grid place-items-center sm:place-items-start">
-            <div
-              className="grid mt-6 
-                sm:mt-0 sm:grid-flow-col sm:place-items-center"
-            >
+          <div className="grid place-items-center">
+            <div className="grid grid-flow-col place-items-center gap-9 
+              sm:grid-flow-row md:gap-0">
               <Button click={this.getCoordinatesHandler}>
                 GET MY LOCATION
               </Button>
@@ -135,16 +161,16 @@ class HomeContent extends Component {
                     coords: event.target.value,
                   })
                 }
-                className="px-2 py-3 w-full rounded-lg my-3 
-                  sm:px-3 sm:py-4"
+                className="px-3 py-4 w-30 rounded-lg my-3 
+                  sm:px-2 sm:py-3"
                 placeholder="Ex. San Francisco"
               ></input>
               <Button click={this.getManualCoordinatesHandler}>SEARCH</Button>
             </div>
           </div>
           <div
-            className="flex flex-col text-white text-2xl m-4
-            sm:flex-row sm:justify-between sm:m-6"
+            className="flex flex-row text-white text-2xl m-4
+            sm:flex-col sm:justify-between sm:m-6"
           >
             {this.state.showPreview ? preview : content()}
           </div>

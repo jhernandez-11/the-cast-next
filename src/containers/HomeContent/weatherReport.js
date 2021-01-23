@@ -2,15 +2,13 @@ import React from "react";
 
 const weatherReport = (props) => (
   <React.Fragment>
-    <div className="w-full mb-6 
-      sm:mb-0 sm:w-5/12">
+    <div className="w-full mb-6">
       <h2>Location - </h2>
       <p className="text-blue-300 mt-6">
         {props.location ? props.location : null}
       </p>
     </div>
-    <div className="w-full mb-6 
-      sm:mb-0 sm:w-5/12">
+    <div className="w-full mb-6">
       <h2>Current Forecast - </h2>
       <p className="text-blue-300 mt-6">
         {props.currentForecast ? props.currentForecast : null}

@@ -2,14 +2,14 @@ import React from "react";
 
 const infoContent = () => {
   return (
-    <main className="flex justify-around place-items-center relative h-full w-full bg-gray-900 overflow-scroll sm:overflow-hidden">
+    <main className="flex justify-around place-items-center relative h-full w-full bg-gray-900 sm:overflow-hidden sm:h-screen">
       <div className="absolute bg-black w-full h-full z-10 opacity-75"></div>
       <div
-        className="w-full h-full z-10 rounded-xl
-            sm:w-4/5 sm:h-4/5"
+        className="w-2/3 h-5/6 z-10 rounded-xl 
+          min-md:max-h-120 md:w-5/6 sm:w-full sm:h-full sm:rounded-none"
         style={{ background: "rgba(30, 58, 138, .75)" }}
       >
-        <div className="text-white text-2xl h-full grid sm:flex justify-around mt-6 sm:mt-12">
+        <div className="text-white text-2xl h-full flex justify-around mt-12 sm:grid">
           <div>
             <h1>Frontend - </h1>
             <ul className="text-blue-300 text-2xl h-1/2 mt-6 flex flex-col justify-around">

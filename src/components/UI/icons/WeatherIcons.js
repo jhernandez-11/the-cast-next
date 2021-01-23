@@ -2,7 +2,7 @@ import React from "react";
 
 const weatherIcons = (props) => (
   <React.Fragment>
-    <div className="flex h-full w-full relative mt-12 sm:mt-0">
+    <div className="flex h-full w-full relative mt-12 transform-gpu -translate-x-8 translate-y-8 sm:mt-0">
       <svg
         className=" w-16 h-16 animate-ping absolute left-1/2 transform-gpu translate-y-12 z-10"
         xmlns="http://www.w3.org/2000/svg"

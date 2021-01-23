@@ -4,7 +4,7 @@ import Link from "next/link";
 const infoIcon = (props) => (
   <Link href="/info">
     <svg
-      className="w-9 h-9 cursor-pointer"
+      className="w-9 h-9 cursor-pointer transform-gpu hover:scale-105 transition"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
     >

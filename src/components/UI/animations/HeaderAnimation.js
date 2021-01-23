@@ -3,7 +3,7 @@ import Link from "next/link";
 
 class HeaderAnimation extends Component {
   componentDidMount() {
-    const anime = require("../../utils/anime.min.js");
+    const anime = require("../../../utils/anime.min.js");
 
     anime({
       targets: "h1.anime1 div",
@@ -14,7 +14,7 @@ class HeaderAnimation extends Component {
   }
 
   animationHandler = () => {
-    const anime = require("../../utils/anime.min.js");
+    const anime = require("../../../utils/anime.min.js");
 
     anime({
         targets: "h1.anime1 div",
@@ -34,7 +34,7 @@ class HeaderAnimation extends Component {
   render() {
     return (
       <Link href="/">
-        <h1 className="anime1 text-4xl sm:text-5xl font-bold text-blue-500 cursor-pointer flex" onClick={this.animationHandler}>
+        <h1 className="anime1 text-5xl sm:text-4xl font-bold text-blue-500 cursor-pointer flex" onClick={this.animationHandler}>
           <div>T</div>
           <div>H</div>
           <div>E</div>

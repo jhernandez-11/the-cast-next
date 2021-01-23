@@ -14,7 +14,7 @@ const geocode = (address, callback) => {
         location: res.data.features[0].place_name,
       });
     })
-    .catch((error) => callback("Something went wrong!", undefined));
+    .catch((error) => callback("Location error!", undefined));
 };
 
 export default geocode;
