@@ -144,15 +144,14 @@ class HomeContent extends Component {
     return (
       <main
         className="flex place-items-center justify-center relative h-max w-full bg-black overflow-hidden 
-        sm:overflow-scroll sm:h-screen"
+        sm:overflow-scroll sm:h-screen sm:bg-blue-900"
       >
         <div className="flex place-items-center absolute w-full h-full sm:hidden">
           <EarthBackground />
         </div>
         <div
           className="w-5/6 h-5/6 z-10 rounded-xl min-md:max-h-120
-            sm:w-full sm:h-full sm:rounded-none"
-          style={{ background: "rgba(30, 58, 138, .75)" }}
+            sm:w-full sm:h-full sm:rounded-none sm:bg-blue-900"
         >
           <div className="grid place-items-center">
             <div
