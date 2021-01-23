@@ -5,8 +5,8 @@ const infoContent = () => {
     <main className="flex justify-around place-items-center relative h-full w-full bg-gray-900 sm:overflow-hidden sm:h-screen">
       <div className="absolute bg-black w-full h-full z-10 opacity-75"></div>
       <div
-        className="w-2/3 h-5/6 z-10 rounded-xl 
-          min-md:max-h-120 md:w-5/6 sm:w-full sm:h-full sm:rounded-none"
+        className="w-5/6 h-5/6 z-10 rounded-xl 
+           min-md:max-h-120 sm:w-full sm:h-full sm:rounded-none"
         style={{ background: "rgba(30, 58, 138, .75)" }}
       >
         <div className="text-white text-2xl h-full flex justify-around mt-12 sm:grid">

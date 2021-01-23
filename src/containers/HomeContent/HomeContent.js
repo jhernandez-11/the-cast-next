@@ -17,11 +17,11 @@ class HomeContent extends Component {
     showContent: false,
     showPreview: true,
     error: null,
-    width: null
+    width: null,
   };
 
   componentDidMount() {
-    this.setState({ width: window.innerWidth })
+    this.setState({ width: window.innerWidth });
   }
 
   getCoordinatesHandler = () => {
@@ -141,26 +141,24 @@ class HomeContent extends Component {
       }
     };
 
-    const earth = () => {
-      if (this.state.width >= 660) {
-        return <EarthBackground />
-      } else {
-        return null
-      }
-    }
-
     return (
-      <main className="flex place-items-center justify-center relative h-max w-full bg-blue-900 overflow-hidden 
-        sm:overflow-scroll sm:h-screen">
-        { earth() }
+      <main
+        className="flex place-items-center justify-center relative h-max w-full bg-black overflow-hidden 
+        sm:overflow-scroll sm:h-screen"
+      >
+        <div className="flex place-items-center absolute w-full h-full sm:hidden">
+          <EarthBackground />
+        </div>
         <div
-          className="w-2/3 h-5/6 z-10 rounded-xl min-md:max-h-120 md:w-5/6 
+          className="w-5/6 h-5/6 z-10 rounded-xl min-md:max-h-120
             sm:w-full sm:h-full sm:rounded-none"
           style={{ background: "rgba(30, 58, 138, .75)" }}
         >
           <div className="grid place-items-center">
-            <div className="grid grid-flow-col place-items-center gap-9 
-              sm:grid-flow-row md:gap-0">
+            <div
+              className="grid grid-flow-col place-items-center gap-9 
+              sm:grid-flow-row md:gap-0"
+            >
               <Button click={this.getCoordinatesHandler}>
                 GET MY LOCATION
               </Button>
